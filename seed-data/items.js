@@ -11,7 +11,6 @@ export default [
       address: "Left Corner of Grace's Desk",
       serial_num: "JCINC6277IL-FIN3FRN",
       active: true,
-      user_id: 1
     },
     {
       id: 2,
@@ -25,7 +24,6 @@ export default [
       address: "Grace's Home",
       serial_num: "AUG28-2023-TIGGER",
       active: true,
-      user_id: 2
     },
     {
       id: 3,
@@ -39,7 +37,6 @@ export default [
       address: "On the Couch",
       serial_num: "903.735.90-PA 14632",
       active: true,
-      user_id: 3
     },
     {
       id: 4,
@@ -53,7 +50,6 @@ export default [
       address: "On the Bed",
       serial_num: "JCINC6300IF-BARRB1BR",
       active: true,
-      user_id: 4
     },
     {
       id: 5,
@@ -67,6 +63,7 @@ export default [
       address: "Penthouse on The Shelf",
       serial_num: "",
       active: true,
-      user_id: 5
     }
 ]
+
+//npx knex seed:run    to update data

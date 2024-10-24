@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-// import warehousesRoutes from './routes/warehouses-routes.js';
+import itemsRoutes from './routes/items-routes.js';
 // import inventoriesRoutes from './routes/inventories-routes.js'
 
 // Load environment variables from .env file
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Warehouses Routes
-// app.use('/warehouses', warehousesRoutes);
+app.use('/items', itemsRoutes);
 // app.use('/inventories', inventoriesRoutes);
 
 // Basic API route
