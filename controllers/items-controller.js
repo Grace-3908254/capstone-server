@@ -135,10 +135,9 @@ export const edit = async (req, res) => {
     photo,
     birthdate,
     address,
-    serial_num,
+    serial_num
   } = req.body;
 
-  //rmb to set auto id generator later
   if (
     !id ||
     !citizenship ||
@@ -155,7 +154,7 @@ export const edit = async (req, res) => {
     });
   }
 
-  const warehouse = await knex("items").where({ id }).first();
+  const item = await knex("items").where({ id }).first();
 
   if (!item) {
     return res.status(400).json({
@@ -184,7 +183,7 @@ export const edit = async (req, res) => {
       });
     }
 
-    const newItem = await knex("inventories")
+    const newItem = await knex("items")
       .where({ id: req.params.id })
       .first();
 
@@ -219,6 +218,54 @@ export const deleteItem = async (req, res) => {
     });
   }
 };
+
+//inactive items 
+export const getAllInactive = async (_req, res) => {
+  try {
+    const inventoryItems = await knex("items")
+    .where('active', false);
+
+    res.status(200).json(inventoryItems);
+  } catch (error) {
+    res.status(400).send(`Error getting all inactive fuzzy buddies: ${error}`);
+  }
+};
+
+//deactivate 
+export const deactivateItem = async (req, res) => {
+  const id = req.params.id
+  const item = await knex("items").where({ id }).first();
+
+  if (!item) {
+    return res.status(400).json({
+      message: "Nothing was edited",
+    });
+  }
+
+  try {
+    const updatedItem = await knex("items")
+      .where({ id: id})
+      .update({
+        active: false
+      });
+
+    if (!updatedItem) {
+      return res.status(404).json({
+        message: `Could not find the fuzzy buddy: ${req.params.id}`,
+      });
+    }
+
+    const newItem = await knex("items")
+      .where({ id: req.params.id })
+      .first();
+
+    res.status(200).json(newItem);
+  } catch (error) {
+    res.status(500).json({
+      message: `Error updating your fuzzy buddy: ${error}`,
+    });
+  }
+}
 
 //SEARCH BY GIVEN STRING
 export const search = async (_req, res) => {

@@ -61,8 +61,21 @@ export default [
       photo: "GiantBashfulFox.jpg",
       birthdate: "Aug. 17, 2024",
       address: "Penthouse on The Shelf",
-      serial_num: "",
-      active: true,
+      serial_num: "xxx",
+      active: true
+    },
+    {
+      id:6,
+      brand: "Jellycat",
+      citizenship: "Heaven",
+      type: "Mammoth",
+      nickname: "Dumbo",
+      size: "large",
+      photo: "N/A",
+      birthdate: "June 2, 2023",
+      address: "Grace's heart",
+      serial_num: "xxx",
+      active: false
     }
 ]
 
