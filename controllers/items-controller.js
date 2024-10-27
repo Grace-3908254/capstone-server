@@ -6,23 +6,7 @@ const knex = initKnex(configuration);
 export const getAllItems = async (_req, res) => {
   try {
     const inventoryItems = await knex("items")
-    // .select(
-    //   "items.id",
-    //   "items.brand",
-    //   "items.citizenship",
-    //   "items.type",
-    //   "items.nickname",
-    //   "items.size",
-    //   "items.photo",
-    //   "items.birthdate",
-    //   "items.address",
-    //   "items.serial_num",
-    //   "items.active",
-
-    //   "items.created_at",
-    //   "items.updated_at"
-    // )
-    ;
+    .where("active", true);
 
     res.status(200).json(inventoryItems);
   } catch (error) {
@@ -72,6 +56,7 @@ export const add = async (req, res) => {
   const {
     id,
     citizenship,
+    brand,
     type,
     nickname,
     size,
@@ -85,6 +70,7 @@ export const add = async (req, res) => {
   if (
     !id ||
     !citizenship ||
+    !brand ||
     !type ||
     !nickname ||
     !size ||
@@ -126,25 +112,26 @@ export const add = async (req, res) => {
 
 //PUT/UPDATE existing item in the inventories table
 export const edit = async (req, res) => {
+  const { id } = req.params;
   const {
-    id,
     citizenship,
+    brand,
+    photo,
     type,
     nickname,
     size,
-    photo,
     birthdate,
     address,
     serial_num
   } = req.body;
 
   if (
-    !id ||
     !citizenship ||
+    !brand ||
+    !photo ||
     !type ||
     !nickname ||
     !size ||
-    !photo ||
     !birthdate ||
     !address ||
     !serial_num
@@ -166,15 +153,15 @@ export const edit = async (req, res) => {
     const updatedItem = await knex("items")
       .where({ id: req.params.id })
       .update({
-        id,
         citizenship,
+        brand,
         type,
         nickname,
         size,
         photo,
         birthdate,
         address,
-        serial_num,
+        serial_num
       });
 
     if (!updatedItem) {

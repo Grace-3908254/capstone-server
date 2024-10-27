@@ -19,7 +19,7 @@ export default [
       type: "Cat",
       nickname: "Tigger",
       size: "16 pounds",
-      photo: "ReallyCat.jpg",
+      photo: 'ReallyCat.jpg',
       birthdate: "August 28, 2023",
       address: "Grace's Home",
       serial_num: "AUG28-2023-TIGGER",

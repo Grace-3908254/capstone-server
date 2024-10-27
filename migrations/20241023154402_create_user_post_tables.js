@@ -15,7 +15,7 @@ export function up(knex) {
           .timestamp("updated_at")
           .defaultTo(knex.raw("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"));
       })
-      .createTable("item", (table) => {
+      .createTable("items", (table) => {
         table.increments("id").primary();
         table.string("brand").notNullable();
         table.string("citizenship").notNullable();
