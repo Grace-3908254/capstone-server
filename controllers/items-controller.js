@@ -54,7 +54,6 @@ export const getOneItem = async (req, res) => {
 //post/add exisiting item
 export const add = async (req, res) => {
   const {
-    id,
     citizenship,
     brand,
     type,
@@ -68,7 +67,6 @@ export const add = async (req, res) => {
 
   //rmb to set auto id generator later
   if (
-    !id ||
     !citizenship ||
     !brand ||
     !type ||
@@ -96,7 +94,7 @@ export const add = async (req, res) => {
       birthdate,
       address,
       serial_num,
-      active,
+      active: true
     });
 
     const [id] = result;
