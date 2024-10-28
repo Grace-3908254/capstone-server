@@ -71,7 +71,7 @@ export default [
     type: "Mammoth",
     nickname: "Dumbo",
     size: "large",
-    photo: "N/A",
+    photo: "Mammouth.webp",
     birthdate: "June 2, 2023",
     address: "Grace's heart",
     serial_num: "xxx",

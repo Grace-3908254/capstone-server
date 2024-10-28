@@ -268,17 +268,17 @@ export const search = async (_req, res) => {
         "items.address",
         "items.serial_num"
       )
-      .whereILike("items.", `%${s}%`)
       .orWhereILike("items.brand", `%${s}%`)
       .orWhereILike("items.citizenship", `%${s}%`)
       .orWhereILike("items.type", `%${s}%`)
       .orWhereILike("items.nickname", `%${s}%`)
       .orWhereILike("items.serial_num", `%${s}%`)
       .orWhereILike("items.address", `%${s}%`);
+    
     res.status(200).json(inventoryItems);
   } catch (error) {
     res.status(400).send(`Error getting fuzzy buddy: ${error}`);
   }
+};
 
   //allocating item to another table 
-};
